@@ -1,1 +1,1 @@
-# Colorseek
+## Introduction
