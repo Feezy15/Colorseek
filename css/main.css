@@ -1,0 +1,20 @@
+.format-panel{
+    width: 500px;
+    height: 450px;
+    display: none;
+    position: relative;
+}
+
+.format-panel img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
