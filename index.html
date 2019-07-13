@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -10,15 +11,68 @@
   <title>Bruce Luo</title>
 
 </head>
+
 <body>
-  <h2>Upload an image</h2>
-  <div class="format-panel">
-    <img id="output-img" class="img-thumbnail">
+  <div class="container">
+    <div>
+      <h2 style="margin-top: 50px">Upload an image</h2>
+      
+      <form>
+        <div class="form-group">
+          <!-- <label for="file-choose">Upload an image</label> -->
+          <input class="form-control-file" id="file-choose" type="file" accept="image/*">
+        </div>
+      </form>
+      <div class="bottom-border"></div>
+    </div>
+
+    <div class="format-img">
+        <img id="output-img" class="img-thumbnail">
+    </div>
+
+    <div id="extract-options" style="display: none">
+      <button id="run-histogram-algo"class="btn btn-outline-primary">Histogram</button>
+      <button id="run-k-means-algo"class="btn btn-outline-secondary">k-means</button>
+      <div class="bottom-border"></div>
+    </div>
+
+    <div id="palette" style="display: none"></div>
+
+    <!-- <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Color Code</th>
+          <th scope="col">Color</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#123456</td>
+          <td>
+            <div class="format-color" style="background: #123456">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>#32745f</td>
+          <td>
+            <div class="format-color" style="background: #32745f">
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table> -->
+
   </div>
-  <input id="file-choose" type="file" accept="image/*">
+
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="bootstrap/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/util.js" type="module"></script>
+  <script src="js/paletteTable.js" type="module"></script>
+  <script src="js/histogram.js" type="module"></script>
+  <script src="js/main.js" type="module"></script>
+
 </body>
+
 </html>

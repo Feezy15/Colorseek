@@ -1,8 +1,15 @@
+import HistogramPaletteGen from './histogram.js';
+import PaletteTable from './paletteTable.js';
+
 $(document).ready(function(){
     document.getElementById('file-choose').addEventListener('change', handleImage, false);
+
+    $('#run-histogram-algo').click(runHistogram);
+    $('#run-k-means-algo').click(run_k_means);
 });
 
 function handleImage(event){
+    console.log("hello");
     var reader = new FileReader();
     reader.onload = function(e) {
         onReaderLoad(e);
@@ -13,8 +20,10 @@ function handleImage(event){
 
 var onReaderLoad = function(e){
     var image = document.getElementById('output-img');
-    document.querySelector('.format-panel').setAttribute('style', 'display: block;');
+    document.querySelector('.format-img').setAttribute('style', 'display: block;');
     image.src = e.target.result; 
+    
+    document.querySelector('#extract-options').setAttribute('style', 'display: block;');
 
     image.onload = function(){
         onImageLoad(image);
@@ -43,7 +52,6 @@ var pixels = null;
 
 function collectData(canvas){
     var ctx = canvas.getContext('2d');
-    // var imgData = ctx.getImageData(0, 0, 1, 1);
     pixels = [];
     var nextPixel = null;
     console.log("size: " + canvas.width + " x " + canvas.height);
@@ -58,4 +66,28 @@ function collectData(canvas){
         }
     }
     console.log("read: " + pixels.length + " pixels");
+}
+
+function runHistogram(){
+    clearPalette();
+    $('#palette').hide();
+
+    var partitionSize = 3;
+
+    var histoPaletteGen = new HistogramPaletteGen();
+    var histoData = histoPaletteGen.bucketPixels(pixels, partitionSize);
+
+    PaletteTable.drawTable(histoData);
+
+    $('#palette').show();
+}
+
+function run_k_means(){
+    clearPalette();
+
+    $('palette').show();
+}
+
+function clearPalette(){
+    $('#palette').empty();
 }
