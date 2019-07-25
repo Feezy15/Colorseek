@@ -31,12 +31,52 @@
     </div>
 
     <div id="extract-options" style="display: none">
-      <button id="run-histogram-algo"class="btn btn-outline-primary">Histogram</button>
-      <button id="run-k-means-algo"class="btn btn-outline-secondary">k-means</button>
-      <div class="bottom-border"></div>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="#histogram-tab" data-toggle="tab">Histogram</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#k-means-tab" data-toggle="tab">k-means</a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="tab-content">
+      <div class="tab-pane" id="histogram-tab">
+        <form>
+          <div class="form-group">
+            <label for="histPaletteSize">Palette size</label>
+            <input type="number" class="form-control" id="histPaletteSize" placeholder="# colors">
+          </div>
+          <div class="form-group">
+            <label for="histPartitionSize">Partition size</label>
+            <input type="number" class="form-control" id="histPartitionSize" placeholder="e.g. 3 => 3 x 3 x 3">
+          </div>
+          <div class="form-group">
+            <button id="run-histogram-algo" class="btn btn-outline-primary" type="button">Run</button>
+          </div>
+        </form>
+        <div id="histogram-palette"></div>
+      </div>
+
+      <div class="tab-pane" id="k-means-tab">
+        <form>
+          <div class="form-group">
+            <label for="k-means-num">k</label>
+            <input type="number" class="form-control" id="k-means-num" placeholder="e.g. 5 => 5 colors">
+          </div>
+          <div class="form-group">
+            <button id="run-k-means-algo"class="btn btn-outline-secondary" type="button">Run</button>
+          </div>
+        </form>
+        <div id="k-means-palette"></div>
+      </div>
+
+      <!-- <div class="bottom-border"></div> -->
     </div>
 
-    <div id="palette" style="display: none"></div>
+
+    <!-- <div id="palette" style="display: none"></div> -->
 
     <!-- <table class="table">
       <thead>

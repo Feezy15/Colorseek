@@ -5,8 +5,8 @@ const max_dimension = 256;
 class HistogramPaletteGen {
 
     // note: numBuckets refers to number of buckets per dimension (r, g, b)
-    bucketPixels(pixels, numBuckets){
-        var N = 5;
+    bucketPixels(pixels, numBuckets, paletteSize){
+        // var N = 5;
 
         var getPixelKey = function(pixel, numBuckets){
             var bucketSize = max_dimension / numBuckets;
@@ -34,7 +34,7 @@ class HistogramPaletteGen {
         // sortedArray.slice(0, N).forEach(function(bucket){
         //     bucketsavg.push(Utils.findAvgColor(bucket));
         // });
-        return sortedArray.slice(0, N);
+        return sortedArray.slice(0, paletteSize);
         // return {
         //     buckets: sortedArray.slice(0, 10),
         //     bucketColors: bucketsavg

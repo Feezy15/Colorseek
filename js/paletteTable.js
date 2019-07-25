@@ -1,7 +1,7 @@
 import Utils from './util.js';
 
 class PaletteTable {
-    static drawTable(groups) {
+    static drawTable(groups, id) {
         var tableString = "";
 
         // header
@@ -51,7 +51,7 @@ class PaletteTable {
         tableString += '</tbody>';
         tableString += '</table>';
         
-        $('#palette').append(tableString);
+        $(id).append(tableString);
     }
 }
 

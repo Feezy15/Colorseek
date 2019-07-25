@@ -1,4 +1,5 @@
 import HistogramPaletteGen from './histogram.js';
+import kMeansPaletteGen from './kMeans.js';
 import PaletteTable from './paletteTable.js';
 
 $(document).ready(function(){
@@ -9,7 +10,8 @@ $(document).ready(function(){
 });
 
 function handleImage(event){
-    console.log("hello");
+    clearPalette('#histogram-palette');
+    clearPalette('#k-means-palette');
     var reader = new FileReader();
     reader.onload = function(e) {
         onReaderLoad(e);
@@ -54,7 +56,7 @@ function collectData(canvas){
     var ctx = canvas.getContext('2d');
     pixels = [];
     var nextPixel = null;
-    console.log("size: " + canvas.width + " x " + canvas.height);
+    // console.log("size: " + canvas.width + " x " + canvas.height);
     for(var x = 0; x < canvas.width; x++){
         for(var y = 0; y < canvas.height; y++){
             nextPixel = ctx.getImageData(x, y, 1, 1).data;
@@ -65,29 +67,32 @@ function collectData(canvas){
             });
         }
     }
-    console.log("read: " + pixels.length + " pixels");
+    // console.log("read: " + pixels.length + " pixels");
 }
 
 function runHistogram(){
-    clearPalette();
-    $('#palette').hide();
+    clearPalette('#histogram-palette');
 
-    var partitionSize = 3;
+    var partitionSize = parseInt($('#histPartitionSize').val());
+    // console.log(partitionSize);
+    var paletteSize = parseInt($('#histPaletteSize').val());
 
     var histoPaletteGen = new HistogramPaletteGen();
-    var histoData = histoPaletteGen.bucketPixels(pixels, partitionSize);
+    var histoData = histoPaletteGen.bucketPixels(pixels, partitionSize, paletteSize);
 
-    PaletteTable.drawTable(histoData);
-
-    $('#palette').show();
+    PaletteTable.drawTable(histoData, '#histogram-palette');
 }
 
 function run_k_means(){
-    clearPalette();
+    clearPalette('#k-means-palette');
 
-    $('palette').show();
+    var k = parseInt($('#k-means-num').val());
+    var kmeansPaletteGen = new kMeansPaletteGen();
+    var kMeansData = kmeansPaletteGen.run(k, pixels);
+
+    PaletteTable.drawTable(kMeansData.clusters, '#k-means-palette');
 }
 
-function clearPalette(){
-    $('#palette').empty();
+function clearPalette(id){
+    $(id).empty();
 }
