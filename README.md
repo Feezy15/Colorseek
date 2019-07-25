@@ -1,5 +1,6 @@
 ## Introduction
 This app aims to extract a color palette that accurately represents a given input image.
+
 Written using Javascript, Jquery, Bootstrap
 
 ## How it Works
