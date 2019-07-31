@@ -1,7 +1,23 @@
+
 ## Introduction
 This app aims to extract a color palette that accurately represents a given input image.
 
 Written using Javascript, Jquery, Bootstrap
+
+## Installing and running the app locally
+- Clone the repository
+- Navigate to the project's root folder
+- Install dependencies by running:
+
+~~~
+npm install
+~~~
+
+Now, run the app using:
+
+~~~
+npm start
+~~~
 
 ## How it Works
 The image's colors are quantified through rgb pixel data.
@@ -19,6 +35,8 @@ The end result is k different clusters, each assigned a varying number of pixels
 
 ## Problems
 While implementing k-means, I found that empty clusters sometimes arose during any given iteration. The algorithm isn't designed to handle this well, so I decided to just assign the cluster center to the previous iterations's value whenever this happened. There are probably better ways to handle this, but I just opted for the simplest fix.
+
+Also, ES6 modules were slightly confusing to work with. In the future, I may switch to CommonJS modules for my programs.
 
 ## Todo:
 - Improve k-means algorithm efficiency

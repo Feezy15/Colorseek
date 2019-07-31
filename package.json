@@ -1,0 +1,23 @@
+{
+  "name": "colorseek",
+  "version": "1.0.0",
+  "description": "Extract a color palette from an image.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Feezy15/Colorseek.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Feezy15/Colorseek/issues"
+  },
+  "homepage": "https://github.com/Feezy15/Colorseek#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
